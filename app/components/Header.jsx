@@ -8,21 +8,6 @@ import { assets } from "@/assets/assets";
 const Header = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen gap-6 px-4 text-center gradient-splash-dark">
-      {/* Profile Image with scale animation */}
-      <motion.div
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-      >
-        <Image
-          src={assets.profile_img}
-          alt="Profile"
-          width={128}
-          height={128}
-          className="rounded-full shadow-lg shadow-black/40"
-        />
-      </motion.div>
-
       {/* Main Title */}
       <motion.h1
         className="text-white text-4xl sm:text-6xl lg:text-[65px] font-Ovo font-bold max-w-4xl mx-auto drop-shadow-lg"

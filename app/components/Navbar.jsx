@@ -1,35 +1,46 @@
+// components/Navbar.js
+// This component defines your website's navigation bar.
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { assets } from "@/assets/assets";
+import { assets } from "@/assets/assets"; // Assumes you have an assets.js file in a common assets directory
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const [isScroll, setIsScroll] = useState(false);
-  const sideMenuRef = useRef();
+  const sideMenuRef = useRef(); // Ref for controlling the mobile side menu
 
+  // Function to open the mobile menu
   const openMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(-16rem)";
+    if (sideMenuRef.current) {
+      sideMenuRef.current.style.transform = "translateX(-16rem)"; // Opens by moving left
+    }
   };
 
+  // Function to close the mobile menu
   const closeMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(16rem)";
+    if (sideMenuRef.current) {
+      sideMenuRef.current.style.transform = "translateX(16rem)"; // Closes by moving right
+    }
   };
 
+  // Effect to handle scroll-based styling for the navbar
   useEffect(() => {
     const handleScroll = () => {
-      setIsScroll(window.scrollY > 50);
+      setIsScroll(window.scrollY > 50); // Set isScroll to true if scrolled down more than 50px
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // Cleanup event listener
   }, []);
 
+  // Function to smoothly scroll to the About Us section
   const scrollToAbout = () => {
     const aboutSection = document.getElementById("about");
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-      closeMenu();
+      aboutSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll behavior
+      closeMenu(); // Close mobile menu after clicking
     }
   };
 
@@ -38,12 +49,13 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
       <nav
         className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition-colors duration-300`}
         style={{
+          // Dynamic background and backdrop filter based on scroll and dark mode
           backgroundColor: isScroll
             ? isDarkMode
-              ? "rgba(0, 0, 0, 0.7)" // dark mode: translucent black
-              : "rgba(128, 128, 128, 0.4)" // light mode: translucent gray
+              ? "rgba(0, 0, 0, 0.9)" // Adjusted opacity for darker scroll background in dark mode
+              : "rgba(128, 128, 128, 0.6)" // Adjusted opacity for less translucent scroll background in light mode
             : "transparent",
-          backdropFilter: isScroll ? "blur(10px)" : "none",
+          backdropFilter: isScroll ? "blur(10px)" : "none", // Blur effect on scroll
         }}
       >
         {/* Left - Logo */}
@@ -57,7 +69,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           />
         </Link>
 
-        {/* Center - Menu */}
+        {/* Center - Desktop Menu */}
         <ul className="items-center hidden gap-10 px-10 py-2 rounded-full md:flex">
           <li>
             <Link
@@ -68,6 +80,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             </Link>
           </li>
           <li>
+            {/* Button for About Us, triggers smooth scroll */}
             <button
               onClick={scrollToAbout}
               className="text-xl font-medium text-gray-300 font-Ovo hover:text-gray-400 focus:outline-none"
@@ -102,7 +115,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           </li>
         </ul>
 
-        {/* Right - Actions */}
+        {/* Right - Actions (Dark Mode Toggle, Contact Us Button, Mobile Menu Button) */}
         <div className="flex items-center gap-4">
           {/* Dark Mode Toggle */}
           <button
@@ -117,7 +130,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             />
           </button>
 
-          {/* Contact Us Button */}
+          {/* Contact Us Button (hidden on small screens) */}
           <Link
             href="/contact"
             className="items-center hidden gap-3 px-6 py-2 text-gray-300 duration-300 border border-gray-500 rounded-full lg:flex font-Ovo dark:border-white/50 dark:hover:bg-darkHover hover:text-gray-400"
@@ -131,7 +144,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             />
           </Link>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button (visible on small screens) */}
           <button className="block md:hidden" onClick={openMenu} aria-label="Open Menu">
             <Image
               src={isDarkMode ? assets.menu_white : assets.menu_black}
@@ -142,12 +155,13 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu (initially off-screen) */}
         <ul
           ref={sideMenuRef}
           className="fixed top-0 bottom-0 z-50 flex flex-col w-64 h-screen gap-4 px-10 py-20 text-gray-300 transition duration-500 bg-gray-900 md:hidden -right-64 bg-opacity-90"
-          style={{ transform: "translateX(16rem)" }}
+          style={{ transform: "translateX(16rem)" }} // Ensures it starts off-screen
         >
+          {/* Close button for mobile menu */}
           <div className="absolute right-6 top-6" onClick={closeMenu}>
             <Image
               src={isDarkMode ? assets.close_white : assets.close_black}
@@ -157,6 +171,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
               className="cursor-pointer"
             />
           </div>
+          {/* Mobile menu items */}
           <li>
             <Link className="text-xl font-medium font-Ovo" href="/" onClick={closeMenu}>
               Home

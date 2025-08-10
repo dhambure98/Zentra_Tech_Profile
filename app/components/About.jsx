@@ -1,23 +1,27 @@
+// components/AboutUs.js
+// This component presents the "About Company" section with animations.
+
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // For smooth animations
 
 const AboutUs = () => {
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center gradient-splash-dark">
-      {/* Main Title */}
-      <motion.h2
+    // Section with ID 'about' for navigation, centered content, and dark gradient background
+    <section id="about" className="flex flex-col items-center justify-center min-h-screen px-6 text-center gradient-splash-dark">
+      {/* "About Company" button/heading - changed from h2 to button */}
+      <motion.button
         initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="mb-6 text-5xl font-bold text-transparent sm:text-6xl bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text drop-shadow-lg"
+        viewport={{ once: true }} // Animation triggers once when in view
+        className="px-6 py-2 mb-8 text-sm font-semibold tracking-wide text-white uppercase transition-all duration-300 ease-in-out bg-blue-600 rounded-full shadow-lg hover:bg-blue-700"
       >
-        About Company
-      </motion.h2>
+        ABOUT COMPANY
+      </motion.button>
 
-      {/* Subtitle */}
+      {/* Subtitle "Zentra Tech Solutions" with animation */}
       <motion.h3
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -28,7 +32,7 @@ const AboutUs = () => {
         Zentra Tech Solutions
       </motion.h3>
 
-      {/* First Paragraph */}
+      {/* First Paragraph with animation */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -42,7 +46,7 @@ const AboutUs = () => {
         development, web design, and UX/UI — all tailored to meet your unique goals.
       </motion.p>
 
-      {/* Second Paragraph */}
+      {/* Second Paragraph with animation */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
