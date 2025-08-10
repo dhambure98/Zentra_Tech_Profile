@@ -4,14 +4,18 @@
 "use client"; // This directive is crucial for client-side components in Next.js 13+
 
 import { useEffect, useState } from "react";
-import Navbar from "./components/Navbar"; // Path to your Navbar component
-import Header from "./components/Header";   // Path to your Header component
-import AboutUs from "./components/About"; // Corrected: Path to your AboutUs component
-import Services from "./components/Services"; // Import the new Services component
+import Navbar from "./components/Navbar";     // Path to your Navbar component
+import Header from "./components/Header";       // Path to your Header component
+import AboutUs from "./components/About";     // Corrected: Path to your AboutUs component
+import Services from "./components/Services";   // Import the Services component
+import Packages from "./components/Packages";   // Import the Packages component
+import OurTeam from "./components/OurTeam";     // Import the new OurTeam component
 
 export default function Home() {
   // State to manage the current theme mode (true for dark, false for light)
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  // FIX: Initialize to 'false' (light mode) as a safe default for server rendering.
+  // The useEffect will then correctly determine the user's actual preference on the client.
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // useEffect to initialize dark mode based on user's local storage preference
   // or system's preferred color scheme on initial load.
@@ -51,8 +55,12 @@ export default function Home() {
         {/* About Us section - includes the 'about' ID for scrolling */}
         <AboutUs isDarkMode={isDarkMode} /> {/* Pass isDarkMode to AboutUs */}
         {/* Services section - displaying all your offerings */}
-        <Services isDarkMode={isDarkMode} /> {/* Add the new Services component here */}
-        {/* Add other sections here as needed for your full page */}
+        <Services isDarkMode={isDarkMode} /> {/* Add the Services component */}
+        {/* Packages section - displaying pricing plans */}
+        <Packages isDarkMode={isDarkMode} /> {/* Add the Packages component here */}
+        {/* Our Team section - displaying your team members */}
+        <OurTeam isDarkMode={isDarkMode} /> {/* Add the new OurTeam component here */}
+        {/* Add other sections here if needed */}
       </main>
     </>
   );

@@ -52,8 +52,8 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           // Dynamic background and backdrop filter based on scroll and dark mode
           backgroundColor: isScroll
             ? isDarkMode
-              ? "rgba(0, 0, 0, 0.9)" // Adjusted opacity for darker scroll background in dark mode
-              : "rgba(128, 128, 128, 0.6)" // Adjusted opacity for less translucent scroll background in light mode
+              ? "#1a1a1a" // Changed to solid dark color when scrolled in dark mode
+              : "#ffffff" // Changed to solid white color when scrolled in light mode
             : "transparent",
           backdropFilter: isScroll ? "blur(10px)" : "none", // Blur effect on scroll
         }}
@@ -74,7 +74,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <li>
             <Link
               href="/"
-              className="text-xl font-medium text-gray-300 font-Ovo hover:text-gray-400"
+              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400"
             >
               Home
             </Link>
@@ -83,7 +83,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             {/* Button for About Us, triggers smooth scroll */}
             <button
               onClick={scrollToAbout}
-              className="text-xl font-medium text-gray-300 font-Ovo hover:text-gray-400 focus:outline-none"
+              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400 focus:outline-none"
               type="button"
             >
               About Us
@@ -92,7 +92,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <li>
             <Link
               href="/services"
-              className="text-xl font-medium text-gray-300 font-Ovo hover:text-gray-400"
+              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400"
             >
               Services
             </Link>
@@ -100,7 +100,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <li>
             <Link
               href="/packages"
-              className="text-xl font-medium text-gray-300 font-Ovo hover:text-gray-400"
+              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400"
             >
               Packages
             </Link>
@@ -108,7 +108,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <li>
             <Link
               href="/team"
-              className="text-xl font-medium text-gray-300 font-Ovo hover:text-gray-400"
+              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400"
             >
               Our Team
             </Link>
@@ -133,7 +133,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           {/* Contact Us Button (hidden on small screens) */}
           <Link
             href="/contact"
-            className="items-center hidden gap-3 px-6 py-2 text-gray-300 duration-300 border border-gray-500 rounded-full lg:flex font-Ovo dark:border-white/50 dark:hover:bg-darkHover hover:text-gray-400"
+            className="items-center hidden gap-3 px-6 py-2 font-sans text-gray-300 duration-300 border border-gray-500 rounded-full lg:flex dark:border-white/50 dark:hover:bg-darkHover hover:text-gray-400"
           >
             Contact Us
             <Image
@@ -173,36 +173,36 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           </div>
           {/* Mobile menu items */}
           <li>
-            <Link className="text-xl font-medium font-Ovo" href="/" onClick={closeMenu}>
+            <Link className="font-sans text-xl font-medium" href="/" onClick={closeMenu}>
               Home
             </Link>
           </li>
           <li>
             <button
               onClick={scrollToAbout}
-              className="w-full text-xl font-medium text-left font-Ovo"
+              className="w-full font-sans text-xl font-medium text-left"
               type="button"
             >
               About Us
             </button>
           </li>
           <li>
-            <Link className="text-xl font-medium font-Ovo" href="/services" onClick={closeMenu}>
+            <Link className="font-sans text-xl font-medium" href="/services" onClick={closeMenu}>
               Services
             </Link>
           </li>
           <li>
-            <Link className="text-xl font-medium font-Ovo" href="/packages" onClick={closeMenu}>
+            <Link className="font-sans text-xl font-medium" href="/packages" onClick={closeMenu}>
               Packages
             </Link>
           </li>
           <li>
-            <Link className="text-xl font-medium font-Ovo" href="/team" onClick={closeMenu}>
+            <Link className="font-sans text-xl font-medium" href="/team" onClick={closeMenu}>
               Our Team
             </Link>
           </li>
           <li>
-            <Link className="text-xl font-medium font-Ovo" href="/contact" onClick={closeMenu}>
+            <Link className="font-sans text-xl font-medium" href="/contact" onClick={closeMenu}>
               Contact Us
             </Link>
           </li>
