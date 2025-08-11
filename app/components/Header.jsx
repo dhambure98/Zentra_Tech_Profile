@@ -36,7 +36,7 @@ const Header = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        Let’s Build Together
+        Start Your Digital Journey
       </motion.button>
     </div>
   );

@@ -11,7 +11,7 @@ import Services from "./components/Services";   // Import the Services component
 import Packages from "./components/Packages";   // Import the Packages component
 import OurTeam from "./components/OurTeam";     // Import the OurTeam component
 import Contact from "./components/Contact";     // Import the Contact component
-import Footer from "./components/Footer";     // Import the new Footer component
+import Footer from "./components/Footer";     // Import the Footer component
 
 export default function Home() {
   // State to manage the current theme mode (true for dark, false for light)
@@ -51,7 +51,7 @@ export default function Home() {
     <>
       {/* Navbar component, passing theme state and setter for toggle functionality */}
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <main className={`${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'} text-white transition-colors duration-300`}>
+      <main className={`${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'} text-white transition-colors duration-300`}> {/* Changed to bg-gray-950 for darker background */}
         {/* Header section - your hero component */}
         <Header isDarkMode={isDarkMode} />
         {/* About Us section - includes the 'about' ID for scrolling */}
@@ -66,7 +66,7 @@ export default function Home() {
         <Contact isDarkMode={isDarkMode} />
       </main>
       {/* Footer section - at the bottom of the page */}
-      <Footer isDarkMode={isDarkMode} /> {/* Add the new Footer component here */}
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 }
