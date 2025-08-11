@@ -44,6 +44,34 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     }
   };
 
+  // Function to smoothly scroll to the Services section
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById("services");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth" });
+      closeMenu();
+    }
+  };
+
+  // Function to smoothly scroll to the Packages section
+  const scrollToPackages = () => {
+    const packagesSection = document.getElementById("packages");
+    if (packagesSection) {
+      packagesSection.scrollIntoView({ behavior: "smooth" });
+      closeMenu();
+    }
+  };
+
+  // Function to smoothly scroll to the Our Team section
+  const scrollToTeam = () => {
+    const teamSection = document.getElementById("team");
+    if (teamSection) {
+      teamSection.scrollIntoView({ behavior: "smooth" });
+      closeMenu();
+    }
+  };
+
+
   return (
     <>
       <nav
@@ -59,7 +87,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         }}
       >
         {/* Left - Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 cursor-pointer">
           <Image
             src={isDarkMode ? assets.logo_dark : assets.logo}
             alt="Zentra Tech Logo"
@@ -70,11 +98,12 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         </Link>
 
         {/* Center - Desktop Menu */}
-        <ul className="items-center hidden gap-10 px-10 py-2 rounded-full md:flex">
+        {/* Changed `px-10 py-2 rounded-full` to provide spacing around the centered items */}
+        <ul className="items-center justify-center flex-grow hidden gap-10 md:flex"> {/* Added flex-grow and justify-center */}
           <li>
             <Link
               href="/"
-              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400"
+              className="font-sans text-xl font-medium text-gray-300 cursor-pointer hover:text-gray-400"
             >
               Home
             </Link>
@@ -83,35 +112,38 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             {/* Button for About Us, triggers smooth scroll */}
             <button
               onClick={scrollToAbout}
-              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400 focus:outline-none"
+              className="font-sans text-xl font-medium text-gray-300 cursor-pointer hover:text-gray-400 focus:outline-none"
               type="button"
             >
               About Us
             </button>
           </li>
           <li>
-            <Link
-              href="/services"
-              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400"
+            <button
+              onClick={scrollToServices}
+              className="font-sans text-xl font-medium text-gray-300 cursor-pointer hover:text-gray-400 focus:outline-none"
+              type="button"
             >
               Services
-            </Link>
+            </button>
           </li>
           <li>
-            <Link
-              href="/packages"
-              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400"
+            <button
+              onClick={scrollToPackages}
+              className="font-sans text-xl font-medium text-gray-300 cursor-pointer hover:text-gray-400 focus:outline-none"
+              type="button"
             >
               Packages
-            </Link>
+            </button>
           </li>
           <li>
-            <Link
-              href="/team"
-              className="font-sans text-xl font-medium text-gray-300 hover:text-gray-400"
+            <button
+              onClick={scrollToTeam}
+              className="font-sans text-xl font-medium text-gray-300 cursor-pointer hover:text-gray-400 focus:outline-none"
+              type="button"
             >
               Our Team
-            </Link>
+            </button>
           </li>
         </ul>
 
@@ -121,6 +153,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <button
             onClick={() => setIsDarkMode((prev) => !prev)}
             aria-label="Toggle Dark Mode"
+            className="cursor-pointer"
           >
             <Image
               src={isDarkMode ? assets.sun_icon : assets.moon_icon}
@@ -133,7 +166,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           {/* Contact Us Button (hidden on small screens) */}
           <Link
             href="/contact"
-            className="items-center hidden gap-3 px-6 py-2 font-sans text-gray-300 duration-300 border border-gray-500 rounded-full lg:flex dark:border-white/50 dark:hover:bg-darkHover hover:text-gray-400"
+            className="items-center hidden gap-3 px-6 py-2 font-sans text-gray-300 duration-300 border border-gray-500 rounded-full cursor-pointer lg:flex dark:border-white/50 dark:hover:bg-darkHover hover:text-gray-400"
           >
             Contact Us
             <Image
@@ -145,7 +178,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           </Link>
 
           {/* Mobile Menu Button (visible on small screens) */}
-          <button className="block md:hidden" onClick={openMenu} aria-label="Open Menu">
+          <button className="block cursor-pointer md:hidden" onClick={openMenu} aria-label="Open Menu">
             <Image
               src={isDarkMode ? assets.menu_white : assets.menu_black}
               alt="Menu"
@@ -162,7 +195,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           style={{ transform: "translateX(16rem)" }} // Ensures it starts off-screen
         >
           {/* Close button for mobile menu */}
-          <div className="absolute right-6 top-6" onClick={closeMenu}>
+          <div className="absolute cursor-pointer right-6 top-6" onClick={closeMenu}>
             <Image
               src={isDarkMode ? assets.close_white : assets.close_black}
               alt="Close Menu"
@@ -173,36 +206,48 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           </div>
           {/* Mobile menu items */}
           <li>
-            <Link className="font-sans text-xl font-medium" href="/" onClick={closeMenu}>
+            <Link className="font-sans text-xl font-medium cursor-pointer" href="/" onClick={closeMenu}>
               Home
             </Link>
           </li>
           <li>
             <button
               onClick={scrollToAbout}
-              className="w-full font-sans text-xl font-medium text-left"
+              className="w-full font-sans text-xl font-medium text-left cursor-pointer"
               type="button"
             >
               About Us
             </button>
           </li>
           <li>
-            <Link className="font-sans text-xl font-medium" href="/services" onClick={closeMenu}>
+            <button
+              onClick={scrollToServices}
+              className="w-full font-sans text-xl font-medium text-left cursor-pointer"
+              type="button"
+            >
               Services
-            </Link>
+            </button>
           </li>
           <li>
-            <Link className="font-sans text-xl font-medium" href="/packages" onClick={closeMenu}>
+            <button
+              onClick={scrollToPackages}
+              className="w-full font-sans text-xl font-medium text-left cursor-pointer"
+              type="button"
+            >
               Packages
-            </Link>
+            </button>
           </li>
           <li>
-            <Link className="font-sans text-xl font-medium" href="/team" onClick={closeMenu}>
+            <button
+              onClick={scrollToTeam}
+              className="w-full font-sans text-xl font-medium text-left cursor-pointer"
+              type="button"
+            >
               Our Team
-            </Link>
+            </button>
           </li>
           <li>
-            <Link className="font-sans text-xl font-medium" href="/contact" onClick={closeMenu}>
+            <Link className="font-sans text-xl font-medium cursor-pointer" href="/contact" onClick={closeMenu}>
               Contact Us
             </Link>
           </li>

@@ -9,7 +9,9 @@ import Header from "./components/Header";       // Path to your Header component
 import AboutUs from "./components/About";     // Corrected: Path to your AboutUs component
 import Services from "./components/Services";   // Import the Services component
 import Packages from "./components/Packages";   // Import the Packages component
-import OurTeam from "./components/OurTeam";     // Import the new OurTeam component
+import OurTeam from "./components/OurTeam";     // Import the OurTeam component
+import Contact from "./components/Contact";     // Import the Contact component
+import Footer from "./components/Footer";     // Import the new Footer component
 
 export default function Home() {
   // State to manage the current theme mode (true for dark, false for light)
@@ -51,17 +53,20 @@ export default function Home() {
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <main className={`${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'} text-white transition-colors duration-300`}>
         {/* Header section - your hero component */}
-        <Header isDarkMode={isDarkMode} /> {/* Pass isDarkMode to Header */}
+        <Header isDarkMode={isDarkMode} />
         {/* About Us section - includes the 'about' ID for scrolling */}
-        <AboutUs isDarkMode={isDarkMode} /> {/* Pass isDarkMode to AboutUs */}
+        <AboutUs isDarkMode={isDarkMode} />
         {/* Services section - displaying all your offerings */}
-        <Services isDarkMode={isDarkMode} /> {/* Add the Services component */}
+        <Services isDarkMode={isDarkMode} />
         {/* Packages section - displaying pricing plans */}
-        <Packages isDarkMode={isDarkMode} /> {/* Add the Packages component here */}
+        <Packages isDarkMode={isDarkMode} />
         {/* Our Team section - displaying your team members */}
-        <OurTeam isDarkMode={isDarkMode} /> {/* Add the new OurTeam component here */}
-        {/* Add other sections here if needed */}
+        <OurTeam isDarkMode={isDarkMode} />
+        {/* Contact Us section - for reaching out */}
+        <Contact isDarkMode={isDarkMode} />
       </main>
+      {/* Footer section - at the bottom of the page */}
+      <Footer isDarkMode={isDarkMode} /> {/* Add the new Footer component here */}
     </>
   );
 }

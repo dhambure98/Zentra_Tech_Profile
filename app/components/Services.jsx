@@ -78,7 +78,7 @@ const Services = ({ isDarkMode }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="px-6 py-2 mb-16 text-sm font-semibold tracking-wide text-white uppercase transition-all duration-300 ease-in-out bg-blue-600 rounded-full shadow-lg hover:bg-blue-700"
+        className="px-6 py-2 mb-16 text-sm font-semibold tracking-wide text-white uppercase transition-all duration-300 ease-in-out bg-blue-600 rounded-full shadow-lg cursor-pointer hover:bg-blue-700" // Added cursor-pointer
       >
         OUR SERVICES
       </motion.button>
@@ -90,12 +90,13 @@ const Services = ({ isDarkMode }) => {
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -5 }} // Added hover animation for a slight lift
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className={`p-6 rounded-xl border-2 ${isDarkMode ? 'bg-gray-800 border-blue-600' : 'bg-white border-blue-300'} shadow-lg text-left transform hover:scale-105 transition-transform duration-300`}
+            className={`p-6 rounded-xl border-2 ${isDarkMode ? 'bg-gray-800 border-blue-600' : 'bg-white border-blue-300'} shadow-lg text-left transform hover:scale-105 transition-transform duration-300 cursor-pointer`} // Added cursor-pointer and hover transform
           >
             {/* Service title */}
-            <h3 className={`font-Ovo text-xl sm:text-2xl font-bold mb-4 ${isDarkMode ? 'text-blue-400' : 'text-blue-700'}`}>
+            <h3 className={`font-sans text-xl sm:text-2xl font-bold mb-4 ${isDarkMode ? 'text-blue-400' : 'text-blue-700'}`}> {/* Changed font-Ovo to font-sans */}
               {service.title}
               {/* Checkmark icon */}
               <span className="inline-block ml-2">

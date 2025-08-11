@@ -10,6 +10,12 @@ import close_black from "./close-black.png";
 import arrow_icon from "./arrow-icon.png";
 import arrow_icon_dark from "./arrow-icon-dark.png";
 
+// NEW: Import team member images
+import team_akila from "./team/akila.png";
+import team_pamith from "./team/pamith.png";
+import team_vinindu from "./team/vinindu.png";
+
+
 export const assets = {
   logo,
   logo_dark,
@@ -21,4 +27,8 @@ export const assets = {
   close_black,
   arrow_icon,
   arrow_icon_dark,
+  // NEW: Add team member images to the assets object
+  team_akila,
+  team_pamith,
+  team_vinindu,
 };
